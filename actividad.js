@@ -52,20 +52,20 @@ async updateProduct(id, title, description, price, thumbnail, code, stock) {
     } else { update.title = title }
     if(description === undefined) {
         description = producto[id - 1].description;
-    } else {description = update.description}
+    } else {update.description = description}
     if (price === undefined || price !== Number) {
         price = producto[id - 1].price;
     } else { update.price = price; }
     if(code === undefined) {
         code = producto[id - 1].code;
-    } else { code = update.code}
+    } else { update.code = code}
     if (stock === undefined || stock !== Number) {
         stock = producto[id-1].stock;
-    } else { stock = update.stock}
+    } else { update.stock = stock}
     if (thumbnail === undefined) {
         thumbnail = producto[id-1].thumbnail;
-    } else { thumbnail = update.thumbnail}
-    fs.promises.appendFile(this.#path, `${JSON.stringify(producto)}`)
+    } else { update.thumbnail = thumbnail}
+    fs.promises.appendFile(this.#path, JSON.stringify(producto))
 }
 async deleteProduct(id) {
     let producto = await this.getProducts()
