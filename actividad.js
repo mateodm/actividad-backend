@@ -1,8 +1,11 @@
 const fs = require('fs')
 
 class ProductManager {
-    #path = "./productos.json"
+    #path;
     #acc = 0;
+    constructor(path) {
+        this.#path = path;
+    }
     async getProducts() {
         try {
         const listaProductos = await fs.promises.readFile(this.#path, "utf-8");
@@ -97,7 +100,7 @@ getProductsByID(id) {
 
 /* PRUEBA */
 async function test() {
-    const manager = new ProductManager();
+    const manager = new ProductManager("./Products.json");
 /*  await manager.addProduct(
     "Producto",
     "prueba desc",
