@@ -52,7 +52,7 @@ async updateProduct(id, title, description, price, thumbnail, code, stock) {
     update = producto.find((producto) => producto.id === id)
     if (title === undefined) {
         title = producto[id - 1].title
-    } else { update.title = title }
+    } else { update.title = title; }
     if(description === undefined) {
         description = producto[id - 1].description;
     } else {update.description = description}
@@ -123,4 +123,5 @@ console.log(await manager.getProducts(),)
 
 test()
 
+export default(ProductManager)
 
